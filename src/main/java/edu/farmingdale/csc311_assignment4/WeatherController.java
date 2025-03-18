@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.application.Platform;
 
 
 public class WeatherController {
@@ -28,7 +27,9 @@ public class WeatherController {
     @FXML
     private TextField ThresholdField;
 
-
+    /**
+     * parsed weather data gotten from the csv
+     */
     private List<weatherData> weatherdata = new ArrayList<>();
 
     /**
@@ -89,15 +90,15 @@ public class WeatherController {
     void AvgTemperatureButton(ActionEvent event) {
         try{
             int month = Integer.parseInt(DateField.getText().split("/")[0]);
-            if(month < 1 || month > 12) throw new IllegalArgumentException("Error");
+            if(month < 1 || month > 12) throw new IllegalArgumentException("invalid month");
             double avg = weatherdata.stream()
                     .filter(weatherData -> weatherData.Date().getMonthValue() == month)
                     .mapToDouble(weatherData::Temperature)
                     .average()
                     .orElse(Double.NaN);
-            Platform.runLater(() -> OutputField.setText(String.format("%.2f", avg)));
+            OutputField.setText(String.format("%.2f", avg));
         }catch (Exception e){
-            Platform.runLater(() -> OutputField.setText("Error"));
+            OutputField.setText("Error");
         }
 
     }
@@ -115,9 +116,9 @@ public class WeatherController {
             long count = weatherdata.stream()
                     .filter(weatherData -> weatherData.Date().getMonthValue() == month && weatherData.Temperature() > threshold)
                     .count();
-            Platform.runLater(() -> OutputField.setText(String.format("%d", count)));
+            OutputField.setText(String.format("%d", count));
         }catch(NumberFormatException e){
-            Platform.runLater(() -> OutputField.setText("0"));
+            OutputField.setText("0");
         }
     }
 
@@ -130,13 +131,13 @@ public class WeatherController {
     void RainyCountButton(ActionEvent event) {
         try {
             int month = Integer.parseInt(DateField.getText().split("/")[0]);
-            if(month < 1 || month > 12) throw new IllegalArgumentException("Error");
+            if(month < 1 || month > 12) throw new IllegalArgumentException("invalid month");
             long count = weatherdata.stream()
                     .filter(weatherData -> weatherData.Date().getMonthValue() == month && weatherData.Precipitation() > 0)
                     .count();
-            Platform.runLater(() -> OutputField.setText(String.valueOf(count)));
+           OutputField.setText(String.valueOf(count));
         }catch(NumberFormatException e){
-            Platform.runLater(() -> OutputField.setText("0"));
+            OutputField.setText("0");
         }
     }
 
