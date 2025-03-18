@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc311_assignment4.WeatherController">
+  <children>
+    <Label alignment="CENTER_RIGHT" layoutX="8.0" layoutY="23.0" prefHeight="25.0" prefWidth="97.0" text="Enter your Date: " />
+    <TextField fx:id="DateField" alignment="CENTER" layoutX="149.0" layoutY="23.0" prefHeight="25.0" prefWidth="149.0" promptText="Enter date" />
+    <Label layoutX="8.0" layoutY="73.0" prefHeight="25.0" prefWidth="132.0" text="Temperature Threshold:" />
+    <TextField fx:id="ThresholdField" alignment="CENTER" layoutX="149.0" layoutY="73.0" prefHeight="25.0" prefWidth="149.0" promptText="Threshold" />
+    <Button fx:id="DaysThreshold" layoutX="15.0" layoutY="207.0" mnemonicParsing="false" onAction="#DaysThresholdButton" prefHeight="25.0" prefWidth="251.0" text="Days above threshold" />
+    <Button fx:id="TempAvg" layoutX="15.0" layoutY="162.0" mnemonicParsing="false" onAction="#AvgTemperatureButton" prefHeight="25.0" prefWidth="251.0" text="Average Temperature" />
+    <Button fx:id="RainyCount" layoutX="14.0" layoutY="256.0" mnemonicParsing="false" onAction="#RainyCountButton" prefHeight="25.0" prefWidth="251.0" text="Rainy Days Count" />
+    <TextField fx:id="OutputField" alignment="CENTER" layoutX="54.0" layoutY="123.0" prefHeight="25.0" prefWidth="172.0" promptText="Output" />
+      <Button fx:id="WeatherCategory" layoutX="14.0" layoutY="301.0" mnemonicParsing="false" onAction="#weatherCatBtn" prefHeight="25.0" prefWidth="251.0" text="Weather Category" />
+  </children>
+</AnchorPane>
